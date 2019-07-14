@@ -13,12 +13,13 @@ int pwm;
 String readString;
 
 void setup() {
-  pinMode(PWM_PIN,OUTPUT);// define digital pin 11 as “output”
-  Serial.begin(9600);// set baud rate at 9600
+  pinMode(PWM_PIN,OUTPUT);
+  Serial.begin(9600);
   while (!Serial) {
     ;
   }
-  Serial.println("Bluetooth On please press 1 or 0 to raise or lower PWM");
+  Serial.println("Bluetooth On");
+  Serial.println("Please send 00..99 (2 characters) to set the brightness of the LED strip");
   pinMode(LED_PIN,OUTPUT);
   BT.begin(9600);
   pwm = PWM_MIN;
@@ -49,5 +50,3 @@ void loop() {
   delay(100);
   readString = "";
 }
-
-/////////////////////////////////////////////////////
